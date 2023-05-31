@@ -7,8 +7,6 @@ using UnityEngine;
 public class MouseMovement : MonoBehaviour
 {
 
-
-
     [SerializeField] float m_MoveSpeed;
     [SerializeField] Transform leftPos, rightPos, middlePos;
     [SerializeField] private float m_interpolateAmount;
@@ -24,7 +22,7 @@ public class MouseMovement : MonoBehaviour
 
     private void MoveForward()
     {
-        transform.Translate(Vector3.forward * m_MoveSpeed * Time.deltaTime);
+       // transform.Translate(Vector3.forward * m_MoveSpeed * Time.deltaTime);
     }
 
     private void ChangeLanes()

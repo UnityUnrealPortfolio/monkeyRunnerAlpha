@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_Nexan/Scenes/Mouse_Movement.unity
+    guid: 1ca2c5dc602fa8845aec32e514136dce
   m_configObjects: {}
