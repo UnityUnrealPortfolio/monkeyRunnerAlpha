@@ -9,21 +9,31 @@ public class TerrainSpawner : MonoBehaviour
     [SerializeField] float terrainObjectSpawnRate;
     [SerializeField] float terrainSpawnWaitTime;
     [SerializeField] GameObject[] terrainPrefabObject;
+    [SerializeField] Transform canyonSpawnLocation;
 
-    private int terrainCounter = 0;
+    private int terrainCounter = 1;
     private void Start()
     {
+
         InvokeRepeating("SpawnTerrainObjects",terrainSpawnWaitTime, terrainObjectSpawnRate);
     }
 
     private void SpawnTerrainObjects()
     {
-        int randomObject = Random.Range(0,terrainPrefabObject.Length);
-        Instantiate(terrainPrefabObject[randomObject], new Vector3(startingTerrainObject.position.x,
-            startingTerrainObject.position.y,
-            startingTerrainObject.position.z + (terrainCounter * 200f)),
-            Quaternion.identity);
-
-        terrainCounter++;
+       
+        GameObject newCanyonUnit = PoolManager.Instance.GetPooledItemByTag("canyon");
+        if(newCanyonUnit != null )
+        {
+            newCanyonUnit.transform.SetPositionAndRotation(new Vector3(canyonSpawnLocation.position.x,
+           canyonSpawnLocation.position.y,
+           canyonSpawnLocation.position.z), Quaternion.identity);
+            newCanyonUnit.SetActive(true);
+        }
+        else
+        {
+            Debug.Log("no pooled item!");
+        }
+        
+       
     }
 }
